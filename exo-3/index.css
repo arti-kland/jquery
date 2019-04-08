@@ -15,3 +15,12 @@ footer {
     font-size: 150%;
     color: red;
 }
+.image {
+    width: 800px;
+    height: 250px
+}
+
+.image1 {
+    width: 800px;
+    height: 500px
+}

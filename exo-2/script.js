@@ -1,7 +1,7 @@
 console.log('exercice 2');
 
 
-$(document).ready(function(show){
+$(document).ready(function(){
     console.log($("#title"));
     console.log($("li"));
     console.log($("footer "));
