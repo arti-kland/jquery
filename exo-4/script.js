@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     $(".form-inline input").on("click keypress", function(event){//fonction qui cible sur input de la classe form-inline, et applique la function on(click,keypress) pour recuperer si il ya click et si il ya un keypress de l'user
         var $userText = $(this).val();//variable $userText qui stock les valeur de l'objet l'element courant
-        console.log($userText);// j'affiche les valeur sde ma variable
+        console.log($userText);// j'affiche les valeurs de ma variable
 
     });
 
