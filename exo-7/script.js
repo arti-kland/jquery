@@ -2,32 +2,31 @@ console.log("exercice 7");
 
 var $dataSource;
 var $match = [];
+var $addedUser = [];
 
 $(document).ready(function () {
 
   //voir data
-  $('#vue').on('click', function(){
+  $('#vue').on('click', function () {
     showData(1, data);
   })
 
   //Sur recherche
-  $("input.form-control").on("keyup", function () {
+  $("input#enculer").on("keyup", function () {
     var $search = $(this).val();
     var $match = [];
     if ($search === "") {
-      showData(1, data);
+      showData(1, $dataSource.concat($addedUser));
     } else {
       data.forEach(function (object) {
         if ((object.name.first + object.name.last + object.email + object.phone).toLocaleLowerCase().includes($search.toLocaleLowerCase())) {
           $match.push(object);
         }
       })
-      $dataSource = $match;
-      showData(1, $match);
+      $dataSource = $match.concat($addedUser);
+      showData(1, $dataSource);
     }
   })
-
-
 
   //sur tri
   $('#croissant').on('click', function () {
@@ -37,19 +36,24 @@ $(document).ready(function () {
   })
 });
 
-
 function addLineToTable(element) {
   var $row = $("<tr>");
   var $columnLastName = $("<td>").text(element.name.last);;
   var $columnFirstName = $("<td>").text(element.name.first);
   var $columnEmail = $("<td>").text(element.email);
   var $columnTelephone = $("<td>").text(element.phone);
+  var $button = $("<button>").attr("type", "button").addClass("btn btn-danger delete")
+  var $supp = $('<td>').append($button);
 
   $columnLastName.appendTo($row);
   $columnFirstName.appendTo($row);
   $columnEmail.appendTo($row);
   $columnTelephone.appendTo($row);
+  $supp.appendTo($row);
   $row.appendTo($("tbody"));
+  $(".delete").on("click", function (event) {
+    $(this).closest('tr').remove();
+  });
 }
 
 function showData($page, $match) {
@@ -64,7 +68,7 @@ function showData($page, $match) {
     }
   }
   $dataSource = $match;
-  pagi($match);
+  pagi($dataSource);
 }
 
 function pagi($match) {
@@ -78,25 +82,41 @@ function pagi($match) {
     var $button = $("<button>").attr({ "type": "button", "class": "btn btn-light navButton", "value": i }).text(i);
     $div.append($button);
   }
-    //page navigation
-  $('.navButton').on('click', function(){
+  //page navigation
+  $('.navButton').on('click', function () {
     $page = $(this).text();
     showData($page, $match);
-  
-    })
+
+  })
 }
 
-
 function triAlpha(up) {
-  $resultat = $(data).sort(function (a, b) {
+  $resultat = $($dataSource).sort(function (a, b) {
     var a1 = a.name.first;
     var b1 = b.name.first;
-    if(up === true){
+    if (up === true) {
       return a1.localeCompare(b1);
-    }else{
+    } else {
       return b1.localeCompare(a1);
     }
   });
   $dataSource = $resultat;
-  showData(1, $resultat)
+  showData(1, $dataSource)
 };
+
+function addUser($nameObject) {
+  addLineToTable($nameObject);
+}
+  $("#addUSer").on("click", function () {
+    var $nameObject = {
+      "name": {
+        "last": $("#formName").val(),
+        "first": $("#formFirstName").val(),
+      },
+      "email": $("#formEmail").val(),
+      "phone": $("#formPhone").val(),
+    }
+    //console.log($nameObject);
+    $addedUser.push($nameObject);
+    addUser($nameObject);
+  });
