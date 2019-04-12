@@ -2,17 +2,65 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
-    <script type="text/javascript" src="DATA.js"></script>
-    <script src="script.js"></script>
+  <meta charset="utf-8">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="DATA.js"></script>
 </head>
 
 <body>
-    <div class="container">
+  <div class="container">
+    
+    <form class="form-inline mt-5 justify-content-end">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    </form>
+    <div class='navigation d-flex justify-content-center pagination'></div>
+    <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown button
+      </button>
+      <button type="button" class="btn btn-primary" id="vue">show BDD</button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" id="croissant" href="#">Alphabetique Croissant</a>
+        <a class="dropdown-item"  id="decroissant" href="#">Alphabetique Decroissant</a>
+      </div>
     </div>
+    <table class="table mt-5">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">nom</th>
+          <th scope="col">prénom</th>
+          <th scope="col">email</th>
+          <th scope="col">numéro de téléphone</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+    <form>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Nom</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Prénom</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Numéro de téphone</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1">
+      </div>
+      <button type="button" class="btn btn-primary mb-5">Ajouter</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
 </body>
 
 </html>
